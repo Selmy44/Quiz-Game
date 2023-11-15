@@ -1,0 +1,96 @@
+# Quiz-Game
+This is a Quiz Game platform
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #quiz-container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .option {
+            margin: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <div class="question" id="question1">
+        <p>1. What is the capital of France?</p>
+        <div class="options">
+            <label class="option"><input type="radio" name="q1" value="Paris"> Paris</label>
+            <label class="option"><input type="radio" name="q1" value="Berlin"> Berlin</label>
+            <label class="option"><input type="radio" name="q1" value="Rome"> Rome</label>
+        </div>
+    </div>
+
+    <div class="question" id="question2">
+        <p>2. Which planet is known as the Red Planet?</p>
+        <div class="options">
+            <label class="option"><input type="radio" name="q2" value="Mars"> Mars</label>
+            <label class="option"><input type="radio" name="q2" value="Venus"> Venus</label>
+            <label class="option"><input type="radio" name="q2" value="Jupiter"> Jupiter</label>
+        </div>
+    </div>
+
+    <div class="question" id="question3">
+        <p>3. What is the largest mammal?</p>
+        <div class="options">
+            <label class="option"><input type="radio" name="q3" value="Elephant"> Elephant</label>
+            <label class="option"><input type="radio" name="q3" value="Blue Whale"> Blue Whale</label>
+            <label class="option"><input type="radio" name="q3" value="Giraffe"> Giraffe</label>
+        </div>
+    </div>
+
+    <button onclick="submitQuiz()">Submit Quiz</button>
+    
+    <div id="result"></div>
+</div>
+
+<script>
+    function submitQuiz() {
+        // Retrieve user's answers
+        var answers = {
+            q1: document.querySelector('input[name="q1"]:checked').value,
+            q2: document.querySelector('input[name="q2"]:checked').value,
+            q3: document.querySelector('input[name="q3"]:checked').value
+        };
+
+        // Check answers and calculate score
+        var score = 0;
+        if (answers.q1 === "Paris") score++;
+        if (answers.q2 === "Mars") score++;
+        if (answers.q3 === "Blue Whale") score++;
+
+        // Display result
+        var resultElement = document.getElementById("result");
+        resultElement.textContent = "Your score is: " + score + " out of 3";
+    }
+</script>
+
+</body>
+</html>
